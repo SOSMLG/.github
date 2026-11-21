@@ -32,7 +32,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if grep -RInE '^(<<<<<<<|=======|>>>>>>>)' --exclude-dir=.git .; then
+          if grep -RInE '^(<<<<<<< |=======$|>>>>>>> )' --exclude-dir=.git .; then
             echo "Conflict marker found." >&2
             exit 1
           fi
