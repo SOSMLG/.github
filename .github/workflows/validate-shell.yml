@@ -1,0 +1,48 @@
+name: Validate shell
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  shell:
+    name: Shell syntax
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: bash -n
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -d '' files < <(find . -path ./.git -prune -o -type f \( -name '*.sh' -o -name '*.bash' \) -print0)
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No shell files found."
+          else
+            for file in "${files[@]}"; do
+              echo "check $file"
+              bash -n "$file"
+            done
+          fi
+
+      - name: Conflict markers
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE '^(<<<<<<<|=======|>>>>>>>)' --exclude-dir=.git .; then
+            echo "Conflict marker found." >&2
+            exit 1
+          fi
+          echo "No conflict markers."
+
+      - name: Whitespace
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git rev-parse HEAD^ >/dev/null 2>&1; then
+            git diff --check HEAD^ HEAD
+          fi
+          echo "Whitespace check complete."

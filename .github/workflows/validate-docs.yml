@@ -1,0 +1,64 @@
+name: Validate docs
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  docs:
+    name: Docs validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Check Markdown links and language
+        shell: bash
+        run: |
+          python - <<'PY'
+          import pathlib
+          import re
+          import urllib.parse
+
+          root = pathlib.Path('.')
+          link_re = re.compile(r'\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)')
+          cjk_re = re.compile(
+              '[\u3400-\u4dbf\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]'
+          )
+          skip_prefixes = ('http://', 'https://', 'mailto:', '#', 'data:')
+
+          docs = [
+              p for p in root.rglob('*.md')
+              if p.is_file() and '.git' not in p.parts
+          ]
+
+          failures = []
+          link_count = 0
+
+          for path in docs:
+              text = path.read_text(encoding='utf-8-sig')
+
+              if cjk_re.search(text):
+                  failures.append(f'{path}: non-English/non-Arabic CJK text found')
+
+              for match in link_re.finditer(text):
+                  target = match.group(1).strip('<>')
+                  if target.startswith(skip_prefixes):
+                      continue
+                  target = target.split('#', 1)[0].split('?', 1)[0]
+                  if not target:
+                      continue
+                  target = urllib.parse.unquote(target)
+                  resolved = (path.parent / target).resolve()
+                  if not resolved.exists():
+                      failures.append(f'{path}: missing link target {target}')
+                  link_count += 1
+
+          if failures:
+              print('\n'.join(failures))
+              raise SystemExit(1)
+
+          print(f'Markdown files: {len(docs)}, local links: {link_count}')
+          PY
