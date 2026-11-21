@@ -1,44 +1,48 @@
 # visual standard
 
-This is the canonical visual standard for SOSMLG repositories. Arabic translation: [THEME.ar.md](THEME.ar.md).
+Canonical visual standard for SOSMLG repositories. Arabic translation: [THEME.ar.md](THEME.ar.md).
 
 ## palette
 
 | role | hex | use |
 | --- | --- | --- |
-| canvas | `#16181D` | banners, stats cards, dark surfaces |
-| surface | `#202329` | terminal panels, nested cards |
-| line | `#30343B` | borders, grids, dividers |
-| amber | `#E8A33D` | titles, cursors, active borders, one highlight per view |
-| amber muted | `#D2992F` | icons, secondary accents |
-| text | `#D8D3C8` | body copy, terminal text |
-| muted | `#9A9AA2` | captions, labels |
-| success | `#8FB57A` | passing checks, quiet status only |
+| canvas | `#16181D` | banners and dark surfaces |
+| surface | `#202329` | nested panels |
+| line | `#30343B` | borders and dividers |
+| amber | `#E8A33D` | one highlight per view |
+| amber muted | `#D2992F` | secondary accents where a theme needs them |
+| text | `#D8D3C8` | body copy |
+| muted | `#9A9AA2` | captions and labels |
+| success | `#8FB57A` | passing status only |
 
-## rules
+## page rules
 
-- Keep backgrounds graphite and low contrast. Avoid pure black and bright white.
-- Use amber once per view. If the title is amber, keep borders muted.
-- Keep body text warm gray. Never use neon gradients or glowing effects.
+- Left align the page. Do not center the whole README.
+- Say what the repo does in the headline. Remove hypewords and selling adjectives.
+- Give the page one main action link. Do not stack buttons.
+- Use a four-point grid of real statements. Each row must say something factual.
+- Keep one bright moment: a single amber bar in the banner, or one active state. Flat surfaces everywhere else.
+- Do not use gradients, gradient text, glow, glossy blobs, bouncing or any animation.
+- Do not use emoji in headings, navigation, action links or cards.
+- Do not use Inter for page or banner typography. Use the GitHub default for text and a monospace stack in SVG.
+- Do not add stats cards, contribution graphs, pinned repository cards, badge walls or fake reviews.
+- Do not write tiny all-caps captions or icon boxes.
 - Engineering apps stay on their native light theme.
-- Editors and terminals use Graphite Amber as the base theme. Optional legacy palettes may remain only in Linux theme pickers; they are not the default and are not used in docs, banners, or badges.
-- Do not add another color theme family or icon pack to docs, banners, badges, editors, or terminals. Optional legacy palettes already present in Linux theme pickers are exempt.
-- Do not translate the palette names. Keep English canonical and Arabic as the only translation.
-- Do not add Chinese text.
+- Editors and terminals use Graphite Amber as the base theme. Optional legacy palettes may remain only in Linux theme pickers; they are not the default and are not used in docs, banners or badges.
+- Do not add another color theme family or icon pack to docs, banners, badges, editors or terminals.
+- English is canonical. Arabic is the only translation. No Chinese text.
 
-## GitHub cards
+## page layout
 
-Use these query values for stats, top languages, and pinned repositories:
+| part | rule |
+| --- | --- |
+| banner | flat graphite SVG, one amber bar, title and two factual lines |
+| headline | one descriptive sentence, no adjectives that sell |
+| action | one link, verb first, pointing to the quickstart or docs |
+| grid | four rows, each a label and a real statement |
+| detail | keep the existing technical sections below the grid |
 
-```text
-bg_color=16181d
-title_color=e8a33d
-icon_color=d2992f
-text_color=d8d3c8
-border_color=30343b
-```
-
-Contribution streak cards use the same values with `theme=github_dark`. Badges use `style=for-the-badge` where practical.
+Stats cards, streak cards, top-language cards and pinned repository cards are removed. Badge rows above the headline are removed.
 
 ## Windows profiles
 
