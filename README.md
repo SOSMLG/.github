@@ -8,6 +8,8 @@ Repositories inherit issue and pull request templates from here unless they prov
 
 - [Git guide](docs/GIT_GUIDE.md)
 - [دليل Git](docs/GIT_GUIDE.ar.md)
+- [Visual standard](docs/THEME.md)
+- [المعيار البصري](docs/THEME.ar.md)
 - [Contributing](CONTRIBUTING.md)
 - [Security](SECURITY.md)
 
