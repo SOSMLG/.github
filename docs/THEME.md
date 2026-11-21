@@ -21,8 +21,8 @@ This is the canonical visual standard for SOSMLG repositories. Arabic translatio
 - Use amber once per view. If the title is amber, keep borders muted.
 - Keep body text warm gray. Never use neon gradients or glowing effects.
 - Engineering apps stay on their native light theme.
-- Editors and terminals use Graphite Amber as the base theme. No other color theme family is used.
-- Do not install or reference another color theme family or icon pack.
+- Editors and terminals use Graphite Amber as the base theme. Optional legacy palettes may remain only in Linux theme pickers; they are not the default and are not used in docs, banners, or badges.
+- Do not add another color theme family or icon pack to docs, banners, badges, editors, or terminals. Optional legacy palettes already present in Linux theme pickers are exempt.
 - Do not translate the palette names. Keep English canonical and Arabic as the only translation.
 - Do not add Chinese text.
 
