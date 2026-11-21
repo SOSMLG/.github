@@ -1,10 +1,19 @@
+![banner](assets/banner.svg)
+
 # .github
 
-Default community health files and reusable validation workflows for SOSMLG repositories.
+Shared issue templates, security policy and validation workflows for the SOSMLG repositories. The workflows only parse files and check repository hygiene. They do not install software or change system state.
 
-English is canonical. Arabic is provided in `docs/GIT_GUIDE.ar.md`.
+[read the git guide](docs/GIT_GUIDE.md)
 
-Repositories inherit issue and pull request templates from here unless they provide their own copy. Reusable workflows only parse files and check repository hygiene. They do not install software or change system state.
+| | |
+| --- | --- |
+| **templates** | Repos inherit issue and pull request templates unless they ship their own copy. |
+| **workflows** | Shell, PowerShell, JSON/XML/YAML and docs checks. All use `contents: read`. |
+| **languages** | English is canonical. Arabic guides live under `docs/`. |
+| **secrets** | No secrets are used. Actions are pinned to full commit SHAs. |
+
+## Docs
 
 - [Git guide](docs/GIT_GUIDE.md)
 - [دليل Git](docs/GIT_GUIDE.ar.md)
