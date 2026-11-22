@@ -14,4 +14,4 @@ These repositories contain desktop setup scripts. They install packages and writ
 
 ## Secrets
 
-Secrets belong in the environment or GitHub Secrets. Never commit keys, passwords or tokens. `OMNIROUTE_API_KEY` is read from the environment and is never stored in a file.
+Secrets belong in the environment or GitHub Secrets. Never commit keys, passwords or tokens, and never read a secret value from a tracked file.
