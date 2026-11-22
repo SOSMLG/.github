@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 2
 
       - name: Parse PowerShell files
         shell: pwsh
@@ -37,3 +39,22 @@ jobs:
           }
           if ($failed) { exit 1 }
           Write-Host "Parsed $($files.Count) PowerShell files."
+
+      - name: Conflict markers
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE '^(<<<<<<< |=======$|>>>>>>> )' --exclude-dir=.git .; then
+            echo "Conflict marker found." >&2
+            exit 1
+          fi
+          echo "No conflict markers."
+
+      - name: Whitespace
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git rev-parse HEAD^ >/dev/null 2>&1; then
+            git diff --check HEAD^ HEAD
+          fi
+          echo "Whitespace check complete."
