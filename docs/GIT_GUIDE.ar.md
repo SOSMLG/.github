@@ -47,7 +47,7 @@ security: enable push protection
 - اترك الفحوصات الأربعة للقراءة فقط تنجح: shell وPowerShell والبيانات والوثائق.
 - استخدم دمج squash. التاريخ الخطي يجعل التراجع بسيطاً.
 
-لا توجد اختبارات. التحقق يعني محللات الصياغة وفحوصات الصيغة ونقطة التحقق الحالية في المستودع للقراءة فقط مثل `Verify` أو `-Verify` أو `Validate.ps1` أو `run.sh --verify`.
+لا توجد اختبارات. التحقق يعني محللات الصياغة وفحوصات الصيغة ونقطة التحقق الحالية في المستودع للقراءة فقط مثل `Verify` أو `-Verify` أو `Validate.ps1` أو `install.sh --verify`.
 
 ## الإعداد المحلي
 
@@ -69,7 +69,7 @@ Windows PowerShell 5.1 يقرأ UTF-8 بدون BOM كـ ANSI. أبقِ ملفا�
 ```bash
 git diff --check
 bash -n path/to/script.sh
-./run.sh --verify    # حيث يوجد
+./install.sh --verify    # حيث يوجد
 ```
 
 على Windows:
