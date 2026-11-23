@@ -47,7 +47,7 @@ Rules:
 - Let all four read-only checks pass: shell, PowerShell, data, docs.
 - Use squash merge. Linear history makes reverts simple.
 
-There are no tests. Verification means parsers, syntax checks and the repository's existing read-only `Verify`, `-Verify`, `Validate.ps1` or `run.sh --verify` entry point.
+There are no tests. Verification means parsers, syntax checks and the repository's existing read-only `Verify`, `-Verify`, `Validate.ps1` or `install.sh --verify` entry point.
 
 ## Local setup
 
@@ -69,7 +69,7 @@ Windows PowerShell 5.1 reads BOM-less UTF-8 as ANSI. Keep `.ps1` files ASCII.
 ```bash
 git diff --check
 bash -n path/to/script.sh
-./run.sh --verify    # where present
+./install.sh --verify    # where present
 ```
 
 On Windows:
